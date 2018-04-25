@@ -1,0 +1,10 @@
+{
+  "verbose": true,
+  "ignore": [
+    "locales/*",
+    "node_modules/*",
+    "public/*",
+    "views/*",
+    "Gruntfile.js"
+  ]
+}
