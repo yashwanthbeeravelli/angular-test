@@ -1,4 +1,8 @@
-#Instructions
+# Instructions
+
+- Fork this git repo to your computer
+- Create a branch
+- When you are done, push your work and create a pull request to the original repo.
 
 You must create a weather logging app that allows users to enter temperatures in order to calculate its median, average, highest and lowest points.
 
