@@ -16,10 +16,19 @@ We will evaluate you based on:
 - Your choice of UI architecture;
 
 # Specs:
+
 - Node.js 8.9.4 or higher
 - Angular 1.6+
 - SCSS
 - Your choice of npm packages that you may want to use to help you develop this app
+
+# How to run the project
+
+- Once you have the project cloned on you local machine, make sure to point your command line tool to the project's directory
+- Run `npm i` to install all dependencies
+- Run `npm run client` to start Webpack to compile and watch the files in `./client/app`
+- In another window/tab, run `npm run start` to start the Node.js server (you may have to install Nodemon globally: `npm i -g nodemon`)
+- Open the browser on `http://localhost:3000` to run the app.
 
 # Requirements:
 
