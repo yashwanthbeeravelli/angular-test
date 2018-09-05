@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" ng-app="quickSeries">
+
+<head>
+    <style>
+        ul.pagination {
+            display: inline-block;
+            padding: 0;
+            margin: 20px 30%;
+        }
+
+        ul.pagination li {
+            display: inline;
+        }
+
+        ul.pagination li a {
+            color: blue;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+    </style>
+    <meta charset="utf-8">
+    <title>Quick Series Test for Weather Logging in Angular JS </title>
+</head>
+<header style="text-align: center;">
+    <h2>Quick Series Test for Weather Logging</h2>
+</header>
+
+<body>
+    <div ng-controller="WeatherLogsList">
+        <div style="width: 100%; overflow: hidden;">
+            <div style="margin-left: 0; float: left;">
+                <br/>
+                <label>Search Key : {{search}}</label>
+                <form>
+                    <label>Search</label>
+                    <input type="text" ng-model="search" placeholder="Search">
+                    <p>The searched results are displayed irrespective of case (if found)</p>
+                </form>
+            </div>
+            <div style="margin-right: 35%; float: right">
+                <h4>Add Temperature</h4>
+                <form name="TempData">
+                    <table>
+                        <tr>
+                            <td>
+                                <label>Date</label>
+                            </td>
+                            <td>:</td>
+                            <td><input type="date" name="date" ng-model="date"></td>
+                            <td>
+                                <span ng-show="TempData.date.$invalid && !TempData.date.length">Please Select proper day</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Temperature</label>
+                            </td>
+                            <td>:</td>
+                            <td><input type="number" name="temp" ng-model="temp"></td>
+                            <td>
+                                <span ng-show="TempData.temp.$invalid && !TempData.temp.length">Please Enter proper Temperature
+                                    value</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <button type="button" name="Add" ng-click="addTemp()" ng-disabled="!(!!temp)">Add</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <div style="margin-right: 35%; float: right">
+                <hr/>
+                <label>Average : {{calculateAverage()}}</label> || <label>Highest: {{Highest()}} </label> || <label>Lowest: {{Lowest()}}</label> || <label>Median: {{calculateAverage()}}</label>
+                <br/>
+                <br/>
+                <table style="border-collapse: separate;border-spacing: 50px 0;">
+                    <thead>
+                        <tr>
+                            <th ng-click="sort('date'); sortReverse = !sortReverse">Date
+                                <span ng-show="sortKey=='date'"></span>
+                            </th>
+                            <th ng-click="sort('temp'); sortReverse = !sortReverse">Temperature
+                                <span ng-show="sortKey=='Temperature'"></span>
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr dir-paginate="temp in temperatures|orderBy:sortKey:reverse|filter:search|itemsPerPage:5" ng-click="remTemp(temp)">
+                            <td>{{temp.date}}</td>
+                            <td>{{temp.temp}}</td>
+                            <td><a ng-href="#/{{temp.temp}}">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>                
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" style="list-style-type: none;">
+                    </dir-pagination-controls>                
+            </div>
+			<div>
+			</div>
+        </div>
+
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/dirPagination.js"></script>
+        <script src="app/app.js"></script>
+</body>
+
+</html>
